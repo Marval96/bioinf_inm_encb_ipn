@@ -118,18 +118,173 @@ Ahora pongamos:
     $ echo "adios" > test.txt
 
 + ¿Qué sucedió? ¿Qué hace el comando *echo*?
-+ Ahora escribe
++ Ahora escribe:
 
         $ echo "Hola, de nuevo" >> test.txt
 
 + ¿Ahora qué sucede?
 
+---
+#### **Script**
+
+Como habrás notado puedes hacer tareas directamente en la terminal pero cuando tengas una tarea mayor y  repetitiva frente a ti no suena tan buena idea introducir el comando *n* cantidad de veces, esperando a que termine un proceso para ingresar para el sigueinte comando. Podemos hacer que la computadora trabaje para nosotros, unificar la secuencia de comandos, lanzarlos e irnos a casa o donde tengamos que ir.  
+
+Lo anterior es posible gracias a los **script's**, un archivo ejecutable por un lenguaje de programación como R, Python o Bash. En el caso de Linux el empleado por el SO es Bash pero si quieres saber que interprete de Shell (comandos por terminal) tiene tu equipo simplemente ejecuta:
+
+    $ echo $SHELL
+
+Para crear un script de bash usamos el editor de textos *nano* y lo guardamos con la extensión sh.
+
+    $ nano mi_primer_script.sh
+
+Una vez dentro del editor escribimos:
+
+    #!/bin/bash
+    echo "Hola, $USER"
+
+Para ejecutar el el script:
+
+    $ ./my_primer_script.sh
 
 
-FaALTA:
-Scripts con ciclos y ejecucion en segundo plano
-Permisos
-Variables
+¿Cuál es el resultado? ¿El script funcinó? ¿Tiene idea de que pasó? ¿Comó defines $USER?
+
+Recordemos que Linux es un sistema multiusario, es decir, varias personas pueden estar trabajando en él al mismo tiempo por lo que la gestión de recursosy de archivos es un aspecto clave. Para resolver esto hay todo un sistema de permisos que te permiten realizar ciertas tareas. Veamos esto de forma práctica ejecutando:
+
+    $ ls -lh
+    drwxr-xr-x  4 jrmarval jrmarval 4.0K Nov  7 21:28 evo_helena
+
+    drwxr-xr-x  5 jrmarval jrmarval 4.0K Dec  2 03:53 marval
+
+    -rwx------  1 jrmarval jrmarval   33 Dec  2 13:30 mi_primer_scrip.sh
+
+    drwxr-xr-x 19 jrmarval jrmarval 4.0K Oct 23 01:59 miniconda3
+
+    drwx------  3 jrmarval jrmarval 4.0K Oct 26 11:09 snap
+
+    drwxr-xr-x  2 jrmarval jrmarval 4.0K Oct 23 01:58 software
+
+    ----------  1 jrmarval jrmarval   67 Nov 15 11:32 time.sh
+
+Este comando nos lista los elementos del directorio actual de trabajo pero también nos indica si se trata de un directorio o de un archivo. Además, nos indica los permisos que tiene cada uno de los elementos. Esto esta codificado en tercias que corresponden a la actividad a realziar; **x:ejecutar | r:leer | w:escribir**. Y son aplicables para tres tipos de usarios: Propietario, Grupos y Otros.
+
+Para dar los permisos de ejecución a un archivo se usa un código númerico.
+
+    Leer        | 4
+    Escribir    | 2
+    Ejecutar    | 1
+
+
+Por ejemplo si queremos que un script tenga todos los permisos para todos los usuarios ejecutamos:
+
+    $ chmod 777 time.sh
+    $ ls -lh
+    -rwxrwxrwx  1 jrmarval jrmarval   67 Nov 15 11:32 time.sh
+
+Ahora tu modifica los permisos necesarios para ejecutar el archivo mi_primer_script.sh y verifica que los permisos hayan cambiado. Una vez esto hecho ejecuta el script.
+
+    $ ./my_primer_script.sh
+
+¿Qué será $USER? 
+Se trata de una variable de entorno GLOBAL que contiene el usuario del sistema. El puunto importante aquí es que podemos declarar variables (contenedor de información) en Linux para mejorar nuestros programas. Por ejemplo:
+
+    $ nano mi_primer_script.sh
+
+    #!/bin/bash
+    echo "Hola, $1"
+
+¿Cuál será la salida? Pues en efecto será un saludo con el contenido de la variable $1, la cual se define en la línea de comandos:
+
+    $ ./mi_primer_script.sh tu_nombre
+    Hola, tu_nombre
+
+Ahora si quieres saber cuando tiempo tarda en ejecutarse su script puedes correr:
+
+    $ time ./mi_primer_script.sh 
+
+Con este ejemplo no verás muchas diferencia porque el proceso es muy rápido pero en tareas que toman mucho tiempo saber cuanto tarda en ejecutarse un proceso es muy útil para optimizar nuestro trabajo. Veamos el siguiente script:
+
+    #!/bin/bash
+    # Obtener la fecha actual
+    DATE=$(date)
+    echo "El script inicia $DATE"
+    echo  Hola, $1
+    sleep 10
+    # Obtener la fecha nuevamente
+    DATE=$(date)
+    echo Oye $1, el proceso ha terminado $DATE
+
+¿Qué hace y como se comporta este script?
+Cuando lanzamos un proceso que toma tiempo la terminal queda "secuestrada" lo cual es un impedimento para seguir trabajando. Para ello podemos lanzar el script en segundo plano:
+
+    $ nohup ./mi_primer_scrip.sh Raul &
+
+    $ nohup ./mi_primer_scrip.sh Raul  > salida.txt 2> errores.txt &
+
+¿Cuál es la diferencia entre estos dos maneras de ejecutar el scrip?
+
+ Cada procesos genera un PID (Identificador de Procesos) y este puede ser rastreado para saber si mi proceso sigue en ejecución.
+    
+    $ ps -p <PID>
+    $ ps aux | grep <PID>
+
+Para ver todos los procesos de la computadora usamos el comando *top*.
+
+Finalmente, veremos los *loops/ciclos/bucles* una manera de optimizar nuestros procesos, son una declaración de iteración lo cual esto es realmente útil para tareas repetitivas. 
+
+El primero ciclo que veremos será el *for* el cual realiza una tarea para una variable en un un conjunto de elementos. 
+
+    #!/bin/bash
+    for i in 1 2 3 4 5 do
+    echo "Hello $i"
+    done  
+ 
+     #!/bin/bash
+    # Ciclo for que imprime los números del 1 al $1
+    for ((i = 1; i <= $1; i++)); do
+        echo "Número: $i"
+    done
+    echo Ciclo finalizado. 
+
+    #!/bin/bash
+    for i in * ; do
+        echo He trabajado con el archivo = $i
+    done
+
+También existen ciclos condiconales, es decir, el que se realicen depende una que se cumpla alguna condición y encaso de no hacerlo se realiza otra tarea. Por ejemplo: 
+
+    #!/bin/bash
+
+    # Ejemplo para emitir un mensaje con base en una condición
+
+    edad=$1
+    if [ $edad -ge 18 ]; then
+        echo "Eres mayor de edad."
+    else
+        echo "Eres menor de edad."
+    fi
+
+
+[Material sobre Operadorres](https://medium.com/enredando-con-linux/linux-shell-operadores-8f385713e8ad) 
+
+Otro tipo de ciclo importante es el *while*, el cual ejecuta una función minetras se una condición sea verdadera:
+
+    #!/bin/bash
+    # Inicializar un contador
+    contador=1
+    # Ciclo while que cuenta hasta $1
+    while [ $contador -le $1 ]; do
+        echo "Contador: $contador"
+        ((contador++))
+    done
+
+**Ejercicio:** 
+
+1. Crea una carpeta llamada loop_for; coloca una imagen en ella y ponle el nombre que tu quieras. Ahora deberás generar esa imagen 5 veces usando el nombre que le diste como prefijo seguida de un número (1-5) para distinguir cada imagen. Después deberás ponerlas en un fichero llamado new_name pero ahora las imagenes llevaran el prefijo "figura" seguido del número que le corresponde. Realiza un script para esto y entre más automatizado se encunetre muchísimo mejor. 
+
+2. Escribe una script que realice la tarea que tu quieras pero deberás emplear un ciclo *if* y/o *while*.
+
+**Nota:** la computadora no piensa, solo hace cosas y a veces esas cosas no son las que queremos. 
 
 
 ---
@@ -146,8 +301,7 @@ Variables
 
         $ lscpu
 
-
-
++ Siempre testear nuestros scripts con datos de pruba antes de lanzarlos con los datos reales.
 
 
 
