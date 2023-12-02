@@ -7,6 +7,6 @@ Dra. Mayra Cecilia Suaréz Arriaga
 
 tucorreo@mayra.com
 
-Biol. Exp. Jhonatan Raúl Martínez Valderrama
+Jhonatan Raúl Martínez Valderrama
 
 jhonatanraulm@gmail.com
