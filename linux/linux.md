@@ -279,6 +279,7 @@ Otro tipo de ciclo importante es el *while*, el cual ejecuta una función minetr
     done
 
 ---
+
 ### **Ejercicio:** 
 
 1. Crea una carpeta llamada loop_for; coloca una imagen en ella y ponle el nombre que tu quieras. Ahora deberás generar esa imagen 5 veces usando el nombre que le diste como prefijo seguida de un número (1-5) para distinguir cada imagen. Después deberás ponerlas en un fichero llamado new_name pero ahora las imagenes llevaran el prefijo "figura" seguido del número que le corresponde. Realiza un script para esto y entre más automatizado se encunetre muchísimo mejor. 
