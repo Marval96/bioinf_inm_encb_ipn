@@ -28,9 +28,3 @@ También instalen R y Rstudio por favor, de preferencia la versión más recient
 + https://posit.co/download/rstudio-desktop/
 
 No duden en contactarnos si tienen alguna duda o problema de instalación. Es importante que tengan instalado progrmas para el día de la clase, por favor. El tiempo es corto así que tratemos de aprovecharlo.
-
-<<<<<<< HEAD
-=======
-Jhonatan Raúl Martínez Valderrama
->>>>>>> 37a3dbc1e8c11fc5da8c3f5f9fa1fdedbe8c88b6
-
