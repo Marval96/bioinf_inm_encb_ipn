@@ -3,8 +3,10 @@ Material del apoyo sobre las sesiones de introducción a la bionformática.
 
 ##### **Contacto:**
 
-Dra. Mayra Cecilia Suaréz Arriaga.
+Dra. Mayra Cecilia Suaréz Arriaga
 
+tucorreo@mayra.com
 
 Biol. Exp. Jhonatan Raúl Martínez Valderrama
+
 jhonatanraulm@gmail.com
