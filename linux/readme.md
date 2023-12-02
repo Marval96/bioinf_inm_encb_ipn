@@ -265,7 +265,7 @@ También existen ciclos condiconales, es decir, el que se realicen depende una q
     fi
 
 
-[Material sobre Operadorres](https://medium.com/enredando-con-linux/linux-shell-operadores-8f385713e8ad) 
+[Material sobre Operadores](https://medium.com/enredando-con-linux/linux-shell-operadores-8f385713e8ad) 
 
 Otro tipo de ciclo importante es el *while*, el cual ejecuta una función minetras se una condición sea verdadera:
 
@@ -278,7 +278,9 @@ Otro tipo de ciclo importante es el *while*, el cual ejecuta una función minetr
         ((contador++))
     done
 
-**Ejercicio:** 
+---
+
+### **Ejercicio:** 
 
 1. Crea una carpeta llamada loop_for; coloca una imagen en ella y ponle el nombre que tu quieras. Ahora deberás generar esa imagen 5 veces usando el nombre que le diste como prefijo seguida de un número (1-5) para distinguir cada imagen. Después deberás ponerlas en un fichero llamado new_name pero ahora las imagenes llevaran el prefijo "figura" seguido del número que le corresponde. Realiza un script para esto y entre más automatizado se encunetre muchísimo mejor. 
 
