@@ -1,5 +1,5 @@
 # **Introducción a la bionformática**
-Material de apoyo sobre las sesiones. Durante este curso trabajaremos con el sistema operativo Linux y el lenguaje de programación R. 
+En este repositorio encontrarán el material de apoyo de las sesiones. Durante este curso trabajaremos con el sistema operativo Linux y el lenguaje de programación R. 
 
 ### **Contacto:**
 
