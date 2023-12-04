@@ -3,7 +3,7 @@ En este repositorio encontrarán el material de apoyo de las sesiones. Durante e
 
 ### **Contacto:**
 
-Dra. Mayra Cecilia Suaréz Arriaga: tucorreo@mayra.com
+Dra. Mayra Cecilia Suaréz Arriaga: mostancmayra@hotmail.com
 
 Biol. Exp. Jhonatan Raúl Martínez Valderrama: jhonatanraulm@gmail.com
 
